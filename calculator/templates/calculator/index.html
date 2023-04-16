@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Рецепты</title>
+</head>
+<body>
+    <p style="font-size:12px; font-family:verdana"><a href="/">в меню</a><p>
+    <form method="post" action="">
+        {% csrf_token %}
+        <h2 style="font-size:20px; font-family:verdana">Количество персон:
+            <input name="servings" step="1" min="1" max="100" size="3" type="number" value='{{ servings }}'/>
+            <input type="submit" value="Пересчитать" />
+        </h2>
+    </form>
+
+    {% for ingredient, amount in recipe.items %}
+        <p>{{ ingredient }}: {{ amount }} </p>
+    {% empty %}
+        <p>Такого рецепта не знаю :(</p>
+    {% endfor %}
+</body>
+</html>
