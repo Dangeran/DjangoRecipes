@@ -49,7 +49,7 @@ def show_recipe(request, recipe):
     template = 'calculator/index.html'
     recipe = DATA[recipe]
     servings_recipe = {}
-    for k, y in recipe.items():
-        servings_recipe[k] = y * servings
+    for ingredient, count in recipe.items():
+        servings_recipe[ingredient] = count * servings
     context = {'recipe': servings_recipe, 'servings': servings}
     return render(request, template, context)
